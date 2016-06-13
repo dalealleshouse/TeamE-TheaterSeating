@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{194C3966-1694-4BA8-9FD7-98F71D745270}</ProjectGuid>
+    <ProjectGuid>{76F5774C-531E-40FD-80A6-2BE1DCA20342}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TheaterSeating</RootNamespace>
+    <RootNamespace>TheaterSeatingConsole</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,7 +151,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TheaterSeating.cpp" />
+    <ClCompile Include="TheaterSeatingConsole.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
