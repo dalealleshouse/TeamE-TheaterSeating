@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "../TheaterSeating/TheaterConfiguration.h"
-#include "../TheaterSeating/CommandTextParser.h"
 #include "../TheaterSeating/CommandRunner.h"
 
 using namespace theater;
@@ -16,13 +15,12 @@ const unsigned int kSeatsPerRow{9};
 
 void ShowError()
 {
-	cout << "I’m sorry, I don’t understand that statement.Please try again." << endl;
+	cout << "I'm sorry, I don’t understand that statement. Please try again." << endl;
 }
 
 double GetPricePerSeat()
 {
 	string input{};
-	double price{};
 
 	while (true)
 	{

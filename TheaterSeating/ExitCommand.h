@@ -8,8 +8,8 @@ namespace theater
 	{
 	public:
 
-		ExitCommand(TheaterSeating& theater_seating, bool& end_program)
-			: TheaterCommand(theater_seating, end_program)
+		ExitCommand(TheaterServices& theater_services, bool& end_program)
+			: TheaterCommand(theater_services, end_program)
 		{
 		}
 

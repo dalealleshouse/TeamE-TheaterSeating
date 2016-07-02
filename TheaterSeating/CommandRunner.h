@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "CommandTextParser.h"
 #include "CommandFactory.h"
-#include "TheaterSeating.h"
 
 namespace theater
 {
@@ -13,7 +12,7 @@ namespace theater
 
 	class CommandRunner
 	{
-		TheaterSeating _theater_seating;
+		TheaterServices _theater_services;
 		bool& _end_program;
 		CommandFactory _command_factory;
 		CommandTextParser _text_parser{CommandTextParser{}};

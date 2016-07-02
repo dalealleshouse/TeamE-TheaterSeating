@@ -13,16 +13,15 @@ namespace TheaterSeatingTests
 	CommandFactory SutFactory()
 	{
 		auto end_program{false};
-		auto config{TheaterConfiguration{10.0, 3U, 2U}};
-		auto seating{TheaterSeating{config}};
+		auto seating{TheaterSeating{TheaterConfiguration{10.0, 3U, 2U}}};
 		auto sut{CommandFactory{seating, end_program}};
 		return sut;
 	}
 
 	void TestCommandString(string command, string expected_name)
 	{
-		auto sut{ SutFactory() };
-		auto result{ sut.Build(command) };
+		auto sut{SutFactory()};
+		auto result{sut.Build(command)};
 		Assert::AreEqual(expected_name, result->Name());
 	}
 

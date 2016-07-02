@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "TheaterServices.h"
 
 namespace theater
 {
@@ -10,11 +11,11 @@ namespace theater
 	class TheaterCommand
 	{
 	protected:
-		TheaterSeating& _theater_seating;
+		TheaterServices& _theater_services;
 		bool& _end_program;
 	public:
-		TheaterCommand(TheaterSeating& theater_seating, bool& end_program)
-			: _theater_seating{theater_seating}, _end_program{end_program}
+		TheaterCommand(TheaterServices& theater_services, bool& end_program)
+			: _theater_services{theater_services}, _end_program{end_program}
 		{
 		};
 

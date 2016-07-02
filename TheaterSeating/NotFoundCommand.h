@@ -7,8 +7,8 @@ namespace theater
 		public TheaterCommand
 	{
 	public:
-		NotFoundCommand(TheaterSeating& theater_seating, bool& end_program)
-			: TheaterCommand(theater_seating, end_program)
+		NotFoundCommand(TheaterServices& theater_services, bool& end_program)
+			: TheaterCommand(theater_services, end_program)
 		{
 		}
 

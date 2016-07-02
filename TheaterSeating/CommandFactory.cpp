@@ -3,6 +3,8 @@
 #include "ExitCommand.h"
 #include "TheaterCommand.h"
 #include "NotFoundCommand.h"
+#include "HelpCommand.h"
+#include "TotalCommand.h"
 
 namespace theater
 {
@@ -10,8 +12,8 @@ namespace theater
 	using std::make_shared;
 	using std::transform;
 
-	CommandFactory::CommandFactory(TheaterSeating& theater_seating, bool& end_program)
-		: _theater_seating{theater_seating}, _end_program{end_program}
+	CommandFactory::CommandFactory(TheaterServices& theater_services, bool& end_program)
+		: _theater_services{theater_services}, _end_program{end_program}
 	{
 	}
 
@@ -33,10 +35,16 @@ namespace theater
 		{
 			// Ideally, these would be read in via some type of reflection but I don't
 			// have time to figure out how to do that in C++
-			shared_ptr<TheaterCommand> ex{new ExitCommand{_theater_seating, _end_program}};
+			shared_ptr<TheaterCommand> ex{new ExitCommand{_theater_services, _end_program}};
 			_commands.push_back(ex);
 
-			shared_ptr<TheaterCommand> nf{ new NotFoundCommand{ _theater_seating, _end_program } };
+			shared_ptr<TheaterCommand> help{new HelpCommand{_theater_services, _end_program}};
+			_commands.push_back(help);
+
+			shared_ptr<TheaterCommand> total{new TotalCommand{_theater_services, _end_program}};
+			_commands.push_back(total);
+
+			shared_ptr<TheaterCommand> nf{new NotFoundCommand{_theater_services, _end_program}};
 			_not_found_command = nf;
 		}
 

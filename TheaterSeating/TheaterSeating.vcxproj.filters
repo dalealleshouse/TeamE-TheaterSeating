@@ -39,12 +39,6 @@
     <ClInclude Include="Exceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TheaterSeating.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TheaterCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
     <ClInclude Include="CommandRunner.h">
       <Filter>Commands</Filter>
     </ClInclude>
@@ -60,6 +54,18 @@
     <ClInclude Include="NotFoundCommand.h">
       <Filter>Commands\CommandImpls</Filter>
     </ClInclude>
+    <ClInclude Include="TheaterCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpCommand.h">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClInclude>
+    <ClInclude Include="TotalCommand.h">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClInclude>
+    <ClInclude Include="TheaterServices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -71,9 +77,6 @@
     <ClCompile Include="TheaterSeatTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TheaterSeating.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandRunner.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
@@ -82,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="CommandFactory.cpp">
       <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpCommand.cpp">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClCompile>
+    <ClCompile Include="TotalCommand.cpp">
+      <Filter>Commands\CommandImpls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
