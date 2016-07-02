@@ -4,13 +4,13 @@ namespace theater
 {
 	struct TheaterSeat
 	{
-		TheaterSeat(int row_number, int seat_number)
+		TheaterSeat(unsigned int row_number, unsigned int seat_number)
 			: row_number(row_number),
 			  seat_number(seat_number)
 		{
 		}
 
-		const int row_number;
-		const int seat_number;
+		const unsigned int row_number;
+		const unsigned int seat_number;
 	};
 }

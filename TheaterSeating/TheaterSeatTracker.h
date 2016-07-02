@@ -10,16 +10,16 @@ namespace theater
 
 	class TheaterSeatTracker
 	{
-		vector<vector<bool>> seatmatrix_;
-		TheaterConfiguration configuration_;
+		vector<vector<bool>> _seatmatrix;
+		TheaterConfiguration _configuration;
 
 		void ThrowIfSeatOutOfBounds(TheaterSeat seat) const;
 	public:
 		explicit TheaterSeatTracker(TheaterConfiguration configuration);
-		~TheaterSeatTracker();
 		bool SeatIsAvailable(TheaterSeat seat) const;
 		void ReserveSeat(TheaterSeat seat);
 		const vector<vector<bool>> SeatMatrix() const;
 		const vector<bool> Row(const unsigned int& row_number) const;
+		~TheaterSeatTracker();
 	};
 }

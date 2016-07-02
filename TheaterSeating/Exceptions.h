@@ -4,15 +4,18 @@
 
 namespace theater
 {
-	class TheaterException :public std::runtime_error
+	using std::string;
+	using std::runtime_error;
+
+	class TheaterException :public runtime_error
 	{
-		explicit TheaterException(const std::string& _Message)
+		explicit TheaterException(const string& _Message)
 			: runtime_error(_Message)
 		{
 		}
 	};
 
-	class RowNumberOutOfBoundsException :public std::runtime_error
+	class RowNumberOutOfBoundsException :public runtime_error
 	{
 	public:
 		explicit RowNumberOutOfBoundsException(unsigned int row_number)
@@ -21,7 +24,7 @@ namespace theater
 		};
 	};
 
-	class SeatNotAvailableException :public std::runtime_error
+	class SeatNotAvailableException :public runtime_error
 	{
 	public:
 		explicit SeatNotAvailableException(TheaterSeat seat)
@@ -33,10 +36,10 @@ namespace theater
 		}
 	};
 
-	class SeatOutOfBoundsException : public std::runtime_error
+	class SeatOutOfBoundsException : public runtime_error
 	{
 	public:
-		SeatOutOfBoundsException(TheaterSeat seat)
+		explicit SeatOutOfBoundsException(TheaterSeat seat)
 			: runtime_error("Seat is out of bounds: row_number "
 				+ std::to_string(seat.row_number)
 				+ " seat number "

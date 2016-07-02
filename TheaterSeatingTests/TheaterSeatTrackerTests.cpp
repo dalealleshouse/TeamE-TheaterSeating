@@ -123,7 +123,7 @@ namespace TheaterSeatingTests
 		{
 			auto sut{SutFactory()};
 
-			sut.ReserveSeat(TheaterSeat{20,1});
+			sut.ReserveSeat(TheaterSeat{2,1});
 			auto result{sut.Row(2)};
 			Assert::IsTrue(result[0]);
 			Assert::IsFalse(result[1]);
