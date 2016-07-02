@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../TheaterSeating/CommandFactory.h"
-#include "../TheaterSeating/TheaterSeatTracker.h"
-#include "../TheaterSeating/TheaterSeating.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -13,8 +11,8 @@ namespace TheaterSeatingTests
 	CommandFactory SutFactory()
 	{
 		auto end_program{false};
-		auto seating{TheaterSeating{TheaterConfiguration{10.0, 3U, 2U}}};
-		auto sut{CommandFactory{seating, end_program}};
+		auto services{TheaterServices{TheaterConfiguration{10.0, 3U, 2U}}};
+		auto sut{CommandFactory{services, end_program}};
 		return sut;
 	}
 

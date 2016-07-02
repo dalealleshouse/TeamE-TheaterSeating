@@ -7,8 +7,7 @@ namespace theater
 	using std::make_unique;
 
 	CommandRunner::CommandRunner(const TheaterConfiguration configuration, bool& end_program)
-		: _theater_services{TheaterSeatTracker{configuration}, TheaterSales{configuration}},
-		  _end_program{end_program}
+		: _theater_services{configuration}, _end_program{end_program}
 		  , _command_factory{CommandFactory{_theater_services, end_program}}
 	{
 	}

@@ -66,6 +66,15 @@
     <ClInclude Include="TheaterServices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SeatsCommand.h">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClInclude>
+    <ClInclude Include="SeatChartCommand.h">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClInclude>
+    <ClInclude Include="SaleCommand.h">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

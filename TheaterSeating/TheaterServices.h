@@ -2,12 +2,13 @@
 #include "TheaterSeatTracker.h"
 #include "TheaterSales.h"
 
-namespace theater {
+namespace theater
+{
 	struct TheaterServices
 	{
-		TheaterServices(const TheaterSeatTracker& tracker, const TheaterSales& sales)
-			: tracker(tracker),
-			  sales(sales)
+		explicit TheaterServices(const TheaterConfiguration config)
+			: tracker{TheaterSeatTracker{config}},
+			  sales{TheaterSales{config}}
 		{
 		}
 
