@@ -12,8 +12,8 @@ namespace theater
 	{
 		stringstream ss{};
 
-		ss << "\tTotal Tickets Sold: " << "\t" << _theater_services.sales.SeatsSold() << "\n";
-		ss << "\tTotal Sales: " << "\t\t$" << fixed << setprecision(2)
+		ss << "\tTotal Tickets Sold: \t"  << _theater_services.sales.SeatsSold() << "\n";
+		ss << "\tTotal Sales: \t\t$" << fixed << setprecision(2)
 			<< _theater_services.sales.TotalSales() << "\n";
 
 		return ss.str();

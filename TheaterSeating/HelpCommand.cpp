@@ -5,6 +5,9 @@
 namespace theater
 {
 	using std::stringstream;
+	using std::setw;
+	using std::endl;
+	using std::left;
 
 	string HelpCommand::Execute(vector<string> command_arguments)
 	{
@@ -14,7 +17,13 @@ namespace theater
 
 		for (auto cmd:fac.Commands())
 			if (cmd->IncludeInHelp())
-				ss << "\t" << cmd->Name() << ": " << "\t" << cmd->Description() << "\n";
+				ss 
+				<< setw(5)
+				<< ""
+				<< left
+				<< setw(15) 
+				<< cmd->Name() + ":"
+				<< cmd->Description() << endl;
 
 		return ss.str();
 	}

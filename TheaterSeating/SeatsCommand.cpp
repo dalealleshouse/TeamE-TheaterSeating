@@ -24,11 +24,11 @@ namespace theater
 
 		stringstream ss{};
 
-		ss << "Seats Available ";
+		ss << "\tSeats Available ";
 
 		if (command_arguments.size() == 0)
 		{
-			ss << ":" << _theater_services.tracker.SeatsAvailable();
+			ss << ": \t" << _theater_services.tracker.SeatsAvailable();
 			return ss.str();
 		}
 
@@ -45,7 +45,7 @@ namespace theater
 
 		ss << "R"
 			<< row_number
-			<< ":"
+			<< ": \t"
 			<< _theater_services.tracker.SeatsAvailable(stoi(command_arguments[0]));
 		return ss.str();
 	}
