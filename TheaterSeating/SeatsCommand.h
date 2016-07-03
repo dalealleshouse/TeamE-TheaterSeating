@@ -6,6 +6,7 @@ namespace theater
 	class SeatsCommand :
 		public TheaterCommand
 	{
+		string InvalidArgument() const;
 	public:
 		SeatsCommand(TheaterServices& theater_services, bool& end_program)
 			: TheaterCommand(theater_services, end_program)

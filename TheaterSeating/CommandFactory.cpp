@@ -5,6 +5,7 @@
 #include "NotFoundCommand.h"
 #include "HelpCommand.h"
 #include "TotalCommand.h"
+#include "SeatsCommand.h"
 
 namespace theater
 {
@@ -40,6 +41,9 @@ namespace theater
 
 			shared_ptr<TheaterCommand> help{new HelpCommand{_theater_services, _end_program}};
 			_commands.push_back(help);
+
+			shared_ptr<TheaterCommand> seats{ new SeatsCommand{ _theater_services, _end_program } };
+			_commands.push_back(seats);
 
 			shared_ptr<TheaterCommand> total{new TotalCommand{_theater_services, _end_program}};
 			_commands.push_back(total);

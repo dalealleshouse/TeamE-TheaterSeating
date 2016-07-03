@@ -16,6 +16,8 @@ namespace theater
 		void ThrowIfSeatOutOfBounds(TheaterSeat seat) const;
 	public:
 		explicit TheaterSeatTracker(TheaterConfiguration configuration);
+		unsigned int SeatsAvailable() const;
+		unsigned int SeatsAvailable(const unsigned int& row_number) const;
 		bool SeatIsAvailable(TheaterSeat seat) const;
 		void ReserveSeat(TheaterSeat seat);
 		const vector<vector<bool>> SeatMatrix() const;

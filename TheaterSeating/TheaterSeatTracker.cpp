@@ -5,6 +5,8 @@
 
 namespace theater
 {
+	using std::accumulate;
+
 	void TheaterSeatTracker::ThrowIfSeatOutOfBounds(TheaterSeat seat) const
 	{
 		if (seat.row_number <= 0 ||
@@ -18,6 +20,30 @@ namespace theater
 		: _seatmatrix(configuration.number_of_rows, vector<bool>(configuration.searts_per_row, false)),
 		  _configuration{configuration}
 	{
+	}
+
+	unsigned int SumRow(vector<bool>& row)
+	{
+		auto count{0U};
+		for (auto& b : row)
+			if (!b) ++count;
+
+		return count;
+	}
+
+	unsigned TheaterSeatTracker::SeatsAvailable() const
+	{
+		auto count{0U};
+		for (auto r : _seatmatrix)
+			count += SumRow(r);
+
+		return count;
+	}
+
+	unsigned TheaterSeatTracker::SeatsAvailable(const unsigned int& row_number) const
+	{
+		auto row{Row(row_number)};
+		return SumRow(row);
 	}
 
 	bool TheaterSeatTracker::SeatIsAvailable(TheaterSeat seat) const

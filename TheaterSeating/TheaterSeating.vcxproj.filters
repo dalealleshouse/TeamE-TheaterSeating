@@ -101,5 +101,8 @@
     <ClCompile Include="TotalCommand.cpp">
       <Filter>Commands\CommandImpls</Filter>
     </ClCompile>
+    <ClCompile Include="SeatsCommand.cpp">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

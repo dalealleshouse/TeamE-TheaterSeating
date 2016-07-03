@@ -17,6 +17,57 @@ namespace TheaterSeatingTests
 		return sut;
 	}
 
+	TEST_CLASS(TheaterSeatTracker_SeatsAvailable_Should)
+	{
+	public:
+		TEST_METHOD(ThrowIfRowNumberOutOfBounds)
+		{
+			auto sut{SutFactory()};
+
+			Assert::ExpectException<RowNumberOutOfBoundsException>([&sut]()
+				{
+					sut.SeatsAvailable(20);
+				}
+			);
+		}
+
+		TEST_METHOD(ReturnSeatsIfAllAreOpenInRow)
+		{
+			const auto expected{ 3U };
+			auto sut{ SutFactory() };
+
+			Assert::AreEqual(expected, sut.SeatsAvailable(2));
+		}
+
+		TEST_METHOD(ReturnSeatsIfSomeAreOpenInRow)
+		{
+			const auto expected{ 1U };
+			auto sut{ SutFactory() };
+			sut.ReserveSeat(TheaterSeat{ 2,1 });
+			sut.ReserveSeat(TheaterSeat{ 2,2 });
+
+			Assert::AreEqual(expected, sut.SeatsAvailable(2));
+		}
+
+		TEST_METHOD(ReturnSeatsIfAllAreOpen)
+		{
+			const auto expected{ 6U };
+			auto sut{ SutFactory() };
+
+			Assert::AreEqual(expected, sut.SeatsAvailable());
+		}
+
+		TEST_METHOD(ReturnSeatsIfSomeAreOpen)
+		{
+			const auto expected{ 4U };
+			auto sut{ SutFactory() };
+			sut.ReserveSeat(TheaterSeat{ 2,1 });
+			sut.ReserveSeat(TheaterSeat{ 2,2 });
+
+			Assert::AreEqual(expected, sut.SeatsAvailable());
+		}
+	};
+
 	TEST_CLASS(TheaterSeatTracker_SeatMatrix_Should)
 	{
 	public:
@@ -73,13 +124,13 @@ namespace TheaterSeatingTests
 	public:
 		TEST_METHOD(ThrowIfSeatOutOfBounds)
 		{
-			auto sut{ SutFactory() };
+			auto sut{SutFactory()};
 
-			sut.ReserveSeat(TheaterSeat{ 1,1 });
+			sut.ReserveSeat(TheaterSeat{1,1});
 			Assert::ExpectException<SeatOutOfBoundsException>([&sut]()
-			{
-				sut.ReserveSeat(TheaterSeat{ 10,1 });
-			}
+				{
+					sut.ReserveSeat(TheaterSeat{10,1});
+				}
 			);
 		}
 
