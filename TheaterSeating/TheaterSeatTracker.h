@@ -18,8 +18,8 @@ namespace theater
 		explicit TheaterSeatTracker(TheaterConfiguration configuration);
 		unsigned int SeatsAvailable() const;
 		unsigned int SeatsAvailable(const unsigned int& row_number) const;
-		bool SeatIsAvailable(TheaterSeat seat) const;
-		void ReserveSeat(TheaterSeat seat);
+		bool SeatIsAvailable(const TheaterSeat& seat) const;
+		void ReserveSeat(const TheaterSeat& seat);
 		const vector<vector<bool>> SeatMatrix() const;
 		const vector<bool> Row(const unsigned int& row_number) const;
 		~TheaterSeatTracker();

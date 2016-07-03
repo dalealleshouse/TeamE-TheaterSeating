@@ -9,26 +9,27 @@ namespace theater
 
 	class TheaterException :public runtime_error
 	{
+	protected:
 		explicit TheaterException(const string& _Message)
 			: runtime_error(_Message)
 		{
 		}
 	};
 
-	class RowNumberOutOfBoundsException :public runtime_error
+	class RowNumberOutOfBoundsException :public TheaterException
 	{
 	public:
 		explicit RowNumberOutOfBoundsException(unsigned int row_number)
-			: runtime_error("Row is out of bounds" + std::to_string(row_number))
+			: TheaterException("Row is out of bounds" + std::to_string(row_number))
 		{
 		};
 	};
 
-	class SeatNotAvailableException :public runtime_error
+	class SeatNotAvailableException :public TheaterException
 	{
 	public:
 		explicit SeatNotAvailableException(TheaterSeat seat)
-			: runtime_error("Seat is out of bounds: row_number "
+			: TheaterException("Seat is out of bounds: row_number "
 				+ std::to_string(seat.row_number)
 				+ " seat number "
 				+ std::to_string(seat.seat_number))
@@ -36,11 +37,11 @@ namespace theater
 		}
 	};
 
-	class SeatOutOfBoundsException : public runtime_error
+	class SeatOutOfBoundsException : public TheaterException
 	{
 	public:
 		explicit SeatOutOfBoundsException(TheaterSeat seat)
-			: runtime_error("Seat is out of bounds: row_number "
+			: TheaterException("Seat is out of bounds: row_number "
 				+ std::to_string(seat.row_number)
 				+ " seat number "
 				+ std::to_string(seat.seat_number))

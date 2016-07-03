@@ -46,13 +46,13 @@ namespace theater
 		return SumRow(row);
 	}
 
-	bool TheaterSeatTracker::SeatIsAvailable(TheaterSeat seat) const
+	bool TheaterSeatTracker::SeatIsAvailable(const TheaterSeat& seat) const
 	{
 		ThrowIfSeatOutOfBounds(seat);
 		return !_seatmatrix[seat.row_number - 1][seat.seat_number - 1];
 	}
 
-	void TheaterSeatTracker::ReserveSeat(TheaterSeat seat)
+	void TheaterSeatTracker::ReserveSeat(const TheaterSeat& seat)
 	{
 		ThrowIfSeatOutOfBounds(seat);
 		if (!SeatIsAvailable(seat))

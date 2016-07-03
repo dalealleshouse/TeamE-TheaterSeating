@@ -107,5 +107,8 @@
     <ClCompile Include="SeatChartCommand.cpp">
       <Filter>Commands\CommandImpls</Filter>
     </ClCompile>
+    <ClCompile Include="SaleCommand.cpp">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

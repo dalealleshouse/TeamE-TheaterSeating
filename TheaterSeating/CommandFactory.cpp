@@ -7,6 +7,7 @@
 #include "TotalCommand.h"
 #include "SeatsCommand.h"
 #include "SeatChartCommand.h"
+#include "SaleCommand.h"
 
 namespace theater
 {
@@ -43,10 +44,13 @@ namespace theater
 			shared_ptr<TheaterCommand> help{new HelpCommand{_theater_services, _end_program}};
 			_commands.push_back(help);
 
-			shared_ptr<TheaterCommand> seatschart{ new SeatChartCommand{ _theater_services, _end_program } };
+			shared_ptr<TheaterCommand> sale{new SaleCommand{_theater_services, _end_program}};
+			_commands.push_back(sale);
+
+			shared_ptr<TheaterCommand> seatschart{new SeatChartCommand{_theater_services, _end_program}};
 			_commands.push_back(seatschart);
 
-			shared_ptr<TheaterCommand> seats{ new SeatsCommand{ _theater_services, _end_program } };
+			shared_ptr<TheaterCommand> seats{new SeatsCommand{_theater_services, _end_program}};
 			_commands.push_back(seats);
 
 			shared_ptr<TheaterCommand> total{new TotalCommand{_theater_services, _end_program}};

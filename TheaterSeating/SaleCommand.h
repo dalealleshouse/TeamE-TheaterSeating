@@ -12,6 +12,8 @@ namespace theater
 		{
 		}
 
+		static const string invalid_argument_message;
+		static const string seat_occupied_message;
 		string Execute(vector<string> command_arguments) override;
 		string Name() override;
 		string Description() override;

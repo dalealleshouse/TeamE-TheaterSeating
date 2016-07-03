@@ -47,5 +47,8 @@
     <ClCompile Include="CommandRunnerTests.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="SaleCommandTests.cpp">
+      <Filter>Commands\CommandImpls</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
