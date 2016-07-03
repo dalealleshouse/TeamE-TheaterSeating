@@ -13,9 +13,24 @@ using std::invalid_argument;
 const unsigned int kNumberOfRows{10};
 const unsigned int kSeatsPerRow{9};
 
-void ShowError()
+bool Confirm(const string& confirm_message)
 {
-	cout << "I'm sorry, I don’t understand that statement. Please try again." << endl;
+	cout << confirm_message << endl;
+	cout << "\tconfirm (Y/n)" << endl;
+
+	string input{};
+	while (true)
+	{
+		getline(cin, input);
+
+		if (input == "Y" || input == "y" || input == "")
+			return true;
+
+		if (input == "N" || input == "n")
+			return false;
+		
+		cout << "I'm sorry, I don’t understand that statement. Please enter Y or N." << endl;
+	}
 }
 
 double GetPricePerSeat()
@@ -32,7 +47,7 @@ double GetPricePerSeat()
 		}
 		catch (invalid_argument&)
 		{
-			ShowError();
+			cout << "I'm sorry, I don’t understand that statement. Please try again." << endl;
 		}
 	}
 }
@@ -48,7 +63,10 @@ int main()
 
 	string input{};
 	auto end_program{false};
-	auto runner(CommandRunner{TheaterConfiguration{price, kSeatsPerRow, kNumberOfRows}, end_program});
+	auto runner(CommandRunner{
+		TheaterConfiguration{price, kSeatsPerRow, kNumberOfRows},
+		end_program ,
+		Confirm});
 
 	while (!end_program)
 	{

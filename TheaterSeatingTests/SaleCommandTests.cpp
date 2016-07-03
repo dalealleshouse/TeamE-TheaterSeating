@@ -15,11 +15,17 @@ namespace TheaterSeatingTests
 	{
 		TheaterServices* _services;
 		TheaterCommand* _sut;
+		const double epsilon{ 0.0000001 };
 
 	public:
 		TEST_METHOD_INITIALIZE(SaleCommand_Execute_Should_Init)
 		{
-			_services = new TheaterServices{TheaterConfiguration{10.0,5U,5U}};
+			ConfirmFunc cf{[](const string& s)
+				{
+					return true;
+				}};
+
+			_services = new TheaterServices{TheaterConfiguration{10.0,5U,5U}, cf};
 			_services->tracker.ReserveSeat(TheaterSeat{1,1});
 			auto end_program{false};
 			_sut = new SaleCommand{*_services, end_program};
@@ -57,6 +63,16 @@ namespace TheaterSeatingTests
 			auto expected{"1 1" + SaleCommand::seat_occupied_message};
 			auto result{_sut->Execute(vector<string>{"1 1"})};
 			Assert::AreEqual(expected, result);
+		}
+
+		TEST_METHOD(CompleteSale)
+		{
+			auto expected{ "1 1" + SaleCommand::seat_occupied_message };
+			auto result{ _sut->Execute(vector<string>{"2 1", "2 2", "2 3"}) };
+
+			Assert::AreEqual(30.00, _services->sales.TotalSales(), epsilon);
+			// 3 sales and 1 pre reserved when the sut was created
+			Assert::AreEqual(21U, _services->tracker.SeatsAvailable());
 		}
 	};
 }

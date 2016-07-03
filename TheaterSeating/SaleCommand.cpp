@@ -64,7 +64,19 @@ namespace theater
 			}
 		}
 
-		return "";
+		stringstream ss{};
+		ss << "\tTotal: $" << _theater_services.sales.CalculatePrice(seats.size());
+
+		if(_theater_services.confirm(ss.str()))
+		{
+			_theater_services.sales.SellSeats(seats.size());
+			for (const auto& s : seats)
+				_theater_services.tracker.ReserveSeat(s);
+
+			return "Sale Complete";
+		}
+
+		return "Sale Cancelled";
 	}
 
 	string SaleCommand::Name()

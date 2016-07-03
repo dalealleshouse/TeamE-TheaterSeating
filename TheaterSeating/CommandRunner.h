@@ -17,7 +17,7 @@ namespace theater
 		CommandFactory _command_factory;
 		CommandTextParser _text_parser{CommandTextParser{}};
 	public:
-		CommandRunner(const TheaterConfiguration configuration, bool& end_program);
+		CommandRunner(const TheaterConfiguration configuration, bool& end_program, ConfirmFunc confirm);
 		string Run(string input);
 		~CommandRunner();
 	};

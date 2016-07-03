@@ -11,7 +11,11 @@ namespace TheaterSeatingTests
 	CommandFactory SutFactory()
 	{
 		auto end_program{false};
-		auto services{TheaterServices{TheaterConfiguration{10.0, 3U, 2U}}};
+		ConfirmFunc cf{[](const string& s)
+			{
+				return true;
+			}};
+		auto services{TheaterServices{TheaterConfiguration{10.0, 3U, 2U},cf}};
 		auto sut{CommandFactory{services, end_program}};
 		return sut;
 	}

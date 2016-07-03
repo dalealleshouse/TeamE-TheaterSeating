@@ -12,8 +12,12 @@ namespace CommandRunnerTests
 
 	unique_ptr<CommandRunner> SutFactory(bool& end_program)
 	{
+		ConfirmFunc cf{ [](const string& s)
+		{
+			return true;
+		} };
 		auto config{TheaterConfiguration{10.0, 3U, 2U}};
-		auto sut{make_unique<CommandRunner>(config, end_program)};
+		auto sut{make_unique<CommandRunner>(config, end_program, cf)};
 		return sut;
 	}
 

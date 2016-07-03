@@ -15,7 +15,11 @@ namespace TheaterSeatingTests
 	public:
 		TEST_METHOD(SetExitProgramToTrue)
 		{
-			auto ts{TheaterServices{TheaterConfiguration{0.0,0U,0U}}};
+			ConfirmFunc cf{[](const string& s)
+				{
+					return true;
+				}};
+			auto ts{TheaterServices{TheaterConfiguration{0.0,0U,0U},cf}};
 			auto end_program{false};
 			TheaterCommand* sut{new ExitCommand{ts, end_program}};
 			sut->Execute();
