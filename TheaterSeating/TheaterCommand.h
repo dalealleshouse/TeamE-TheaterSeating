@@ -33,11 +33,6 @@ namespace theater
 
 		virtual string Description() =0;
 
-		virtual bool IncludeInHelp()
-		{
-			return true;
-		};
-
 		virtual ~TheaterCommand()
 		{
 		}

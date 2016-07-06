@@ -27,11 +27,6 @@ namespace theater
 			return "Returns if specified command text is not found";
 		};
 
-		bool IncludeInHelp() override
-		{
-			return false;
-		};
-
 		~NotFoundCommand()
 		{
 		};

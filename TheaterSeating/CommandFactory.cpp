@@ -14,6 +14,9 @@ namespace theater
 	using std::shared_ptr;
 	using std::make_shared;
 	using std::transform;
+	using std::map;
+	using std::make_pair;
+
 
 	CommandFactory::CommandFactory(TheaterServices& theater_services, bool& end_program)
 		: _theater_services{theater_services}, _end_program{end_program}
@@ -25,36 +28,43 @@ namespace theater
 		transform(command.begin(), command.end(), command.begin(), tolower);
 		auto& commands{Commands()};
 
-		for (auto& cmd : commands)
-			if (cmd->Name() == command)
-				return cmd;
+		auto iter = commands.find(command);
+
+		if (iter != commands.end())
+			return iter->second;
 
 		return _not_found_command;
 	}
 
-	const vector<shared_ptr<TheaterCommand>>& CommandFactory::Commands()
+	void CommandFactory::PushCommand(shared_ptr<TheaterCommand>& cmd)
 	{
-		if (_commands.size() == 0)
+		_commands.emplace(make_pair(cmd->Name(), cmd));
+	}
+
+	const map<string, shared_ptr<TheaterCommand>>& CommandFactory::Commands()
+	{
+		if (_commands.empty())
 		{
 			// Ideally, these would be read in via some type of reflection but I don't
 			// have time to figure out how to do that in C++
 			shared_ptr<TheaterCommand> ex{new ExitCommand{_theater_services, _end_program}};
-			_commands.push_back(ex);
+			PushCommand(ex);
 
 			shared_ptr<TheaterCommand> help{new HelpCommand{_theater_services, _end_program}};
-			_commands.push_back(help);
+			_commands.emplace(make_pair(help->Name(), help));
+			PushCommand(help);
 
 			shared_ptr<TheaterCommand> sale{new SaleCommand{_theater_services, _end_program}};
-			_commands.push_back(sale);
+			PushCommand(sale);
 
 			shared_ptr<TheaterCommand> seatschart{new SeatChartCommand{_theater_services, _end_program}};
-			_commands.push_back(seatschart);
+			PushCommand(seatschart);
 
 			shared_ptr<TheaterCommand> seats{new SeatsCommand{_theater_services, _end_program}};
-			_commands.push_back(seats);
+			PushCommand(seats);
 
 			shared_ptr<TheaterCommand> total{new TotalCommand{_theater_services, _end_program}};
-			_commands.push_back(total);
+			PushCommand(total);
 
 			shared_ptr<TheaterCommand> nf{new NotFoundCommand{_theater_services, _end_program}};
 			_not_found_command = nf;

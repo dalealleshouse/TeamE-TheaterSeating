@@ -15,15 +15,14 @@ namespace theater
 
 		stringstream ss{};
 
-		for (auto cmd:fac.Commands())
-			if (cmd->IncludeInHelp())
+		for (const auto& cmd:fac.Commands())
 				ss 
 				<< setw(5)
 				<< ""
 				<< left
 				<< setw(15) 
-				<< cmd->Name() + ":"
-				<< cmd->Description() << endl;
+				<< cmd.first + ":"
+				<< cmd.second->Description() << endl;
 
 		return ss.str();
 	}
